@@ -1,7 +1,13 @@
 const express = require('express');
+const exphbs = require('express-handlebars');
 const app = express();
 const path = require('path');
 const fs = require('fs');
+
+app.engine('handlebars', exphbs.engine({
+    defaultLayout: 'main',
+}));
+app.set('view engine', 'handlebars');
 
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: false })); 
@@ -21,7 +27,31 @@ fs.readFile('./data/iris.json', (err, read) => {
     });
 });
 
-// Reititys
+// Reititys:
+app.get('/', (req, res) => {
+    // res.send('Handlebars is kylläkyllä!');
+    res.render('index',
+        {
+            page_title: 'Tere tulemast',
+
+        });
+});
+
+app.get('/about', (req, res) => {
+    res.render('about', {
+        page_title: 'About',
+    });
+});
+
+app.get('/samples', (req, res) => {
+    res.render('samples', {
+        page_title: 'Näytteet',
+        desc: 'Tässä on listattuna kaikki näytteet, olkaa hyvä.',
+        samples : data
+    });
+});
+
+
 // GET kaikki resurssit
 app.get('/api/irises', (req, res) => {
     res.json(data);
