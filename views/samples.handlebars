@@ -1,0 +1,44 @@
+<h1>{{page_title}}</h1>
+
+{{#if desc}}
+    <p>{{desc}}</p>
+{{else}}
+    <p>No content</p>
+{{/if}}
+
+
+{{!-- {{samples}} --}}
+
+<div class="cards">
+    {{#each samples}}
+    <div class="card">
+        <h3>Sample id: {{this.id}}</h3>
+        <p>Species: {{this.species}}</p>
+        <div id="butt">           
+            <table>
+                <tr>
+                    <th>Meas.</th>
+                    <th>cm</th>
+                </tr>
+                <tr>
+                    <td>Sepal length:</td>
+                    <td>{{this.sepalLength}}</td>
+                </tr>
+                <tr>
+                    <td>Sepal width:</td>
+                    <td>{{this.sepalWidth}}</td>   
+                </tr>
+                <tr>
+                    <td>Petal length:</td> 
+                    <td>{{this.petalLength}}</td>
+                </tr>
+                <tr>
+                    <td>Petal width:</td>
+                    <td>{{this.petalWidth}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
