@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 var index = 0;
-var data = [];
+var data = []; 
 
 // Luetaan data filusta
 // Lisätään dataan id:t -- ei järkevää tässä, mutta nyt ei voi mitään ---
